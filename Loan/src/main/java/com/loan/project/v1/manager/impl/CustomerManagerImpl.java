@@ -3,6 +3,7 @@ package com.loan.project.v1.manager.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class CustomerManagerImpl implements CustomerManager {
 
     @Override
     public Customer createCustomer(Customer customer) {
+	customer.setCustomerId(UUID.randomUUID().toString());
 	return customerDao.save(customer);
     }
 

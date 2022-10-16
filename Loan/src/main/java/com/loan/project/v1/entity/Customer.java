@@ -17,20 +17,22 @@ public class Customer implements Serializable {
     private String customerName;
     private String tifId;
     private String appRefNumber;
-    private String mobileNumber;
+    private float loanAmount;
+    private long mobileNumber;
     private String address;
 
     public Customer() {
 	super();
     }
 
-    public Customer(String customerId, String customerName, String tifId, String appRefNumber, String mobileNumber,
-	    String address) {
+    public Customer(String customerId, String customerName, String tifId, String appRefNumber, float loanAmount,
+	    long mobileNumber, String address) {
 	super();
 	this.customerId = customerId;
 	this.customerName = customerName;
 	this.tifId = tifId;
 	this.appRefNumber = appRefNumber;
+	this.loanAmount = loanAmount;
 	this.mobileNumber = mobileNumber;
 	this.address = address;
     }
@@ -41,6 +43,14 @@ public class Customer implements Serializable {
 
     public void setCustomerId(String customerId) {
 	this.customerId = customerId;
+    }
+
+    public float getLoanAmount() {
+	return loanAmount;
+    }
+
+    public void setLoanAmount(float loanAmount) {
+	this.loanAmount = loanAmount;
     }
 
     public String getCustomerName() {
@@ -67,11 +77,11 @@ public class Customer implements Serializable {
 	this.appRefNumber = appRefNumber;
     }
 
-    public String getMobileNumber() {
+    public long getMobileNumber() {
 	return mobileNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
+    public void setMobileNumber(long mobileNumber) {
 	this.mobileNumber = mobileNumber;
     }
 
