@@ -17,4 +17,6 @@ public interface CustomerManager {
 
     public JsonNode deleteCustomer(String customerId);
 
+    public String getCustomerApplicationByTifId(String tifId);
+
 }

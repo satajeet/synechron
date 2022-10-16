@@ -2,6 +2,7 @@ package com.loan.project.v1.manager.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,12 +40,23 @@ public class CustomerManagerImpl implements CustomerManager {
 
     @Override
     public Customer getCustomer(String customerId) {
-	return customerDao.findById(customerId).get();
+	Optional<Customer> customer = customerDao.findById(customerId);
+	if (customer.isPresent()) {
+	    return customer.get();
+	} else {
+	    return null;
+	}
     }
 
     @Override
     public JsonNode deleteCustomer(String customerId) {
 	customerDao.deleteById(customerId);
 	return LoanConstants.OBJECTMAPPER.createObjectNode();
+    }
+
+    @Override
+    public String getCustomerApplicationByTifId(String tifId) {
+	Customer customer = customerDao.findCustomerByTifId(tifId);
+	return customer.getTifId();
     }
 }
